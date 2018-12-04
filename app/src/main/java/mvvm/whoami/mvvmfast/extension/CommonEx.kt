@@ -6,7 +6,7 @@ import mvvm.whoami.mvvmfast.app.MyApplication
 
 
 /**
- * toast 防止重复点击
+ * toast 防止重复弹出
  */
 private var toast:Toast?=null
 fun showToast(message:String,duration:Int = 0) {
@@ -14,7 +14,7 @@ fun showToast(message:String,duration:Int = 0) {
         toast = Toast.makeText(MyApplication.getInstance(), message, duration)
     } else {
         toast?.setText(message)
-        toast?.setDuration(duration);
+        toast?.duration = duration
     }
     toast?.show()
 }

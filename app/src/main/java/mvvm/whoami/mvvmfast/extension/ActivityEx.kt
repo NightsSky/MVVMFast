@@ -12,7 +12,7 @@ import android.content.Intent
 /**
  * 跳转，不带参数
  * example
- * activityTo(Main2Activity::class.java)
+ * activityTo(DataBindingTestActivity::class.java)
  */
   fun  Activity.activityTo(clazz: Class<*>) {
     this.startActivity(Intent(this, clazz))

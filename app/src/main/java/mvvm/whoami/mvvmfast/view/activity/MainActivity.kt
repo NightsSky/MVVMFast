@@ -3,9 +3,6 @@ package mvvm.whoami.mvvmfast.view.activity
 import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import mvvm.whoami.mvvmfast.R
 import mvvm.whoami.mvvmfast.base.BaseActivity
 import mvvm.whoami.mvvmfast.extension.activityTo
@@ -24,7 +21,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 //        }
         next.setOnClickListener {
 
-            activityTo(Main2Activity::class.java){
+            activityTo(DataBindingTestActivity::class.java){
                 putExtra("number",3)
             }
         }
