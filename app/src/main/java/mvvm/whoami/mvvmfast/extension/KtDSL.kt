@@ -46,7 +46,7 @@ fun <T> LifecycleOwner.load(loader: suspend () -> T): Deferred<T> {
  * will call <code>await()</code> and pass the returned value to <code>block()</code>.
  */
 infix fun <T> Deferred<T>.then(block: suspend (T) -> Unit): Job {
-    return GlobalScope.launch() {
+    return GlobalScope.launch(Dispatchers.Main) {
         try {
             block(this@then.await())
         } catch (e: Exception) {
@@ -78,14 +78,3 @@ inline fun <reified T> Any.safeCast(action: T.() -> Unit) {
     }
 }
 
-/*
-* 将时间戳转换为时间
-*/
-@SuppressLint("SimpleDateFormat")
-fun Long.stampToDate(): String {
-    val res: String
-    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
-    val date = Date(this)
-    res = simpleDateFormat.format(date)
-    return res
-}

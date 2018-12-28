@@ -3,6 +3,7 @@ package mvvm.whoami.mvvmfast.extension
 import android.util.Log
 import android.widget.Toast
 import mvvm.whoami.mvvmfast.app.MyApplication
+import mvvm.whoami.mvvmfast.model.LOG_TAG
 
 
 /**
@@ -22,6 +23,8 @@ fun showToast(message:String,duration:Int = 0) {
 /**
  * log打印
  */
-const val LOG_TAG = "MSG"
+
+fun Loge(msg:String) { Log.e(LOG_TAG, "==>  $msg  <==") }
+fun Logd(msg:String) { Log.d(LOG_TAG, "==>  $msg  <==") }
 fun Loge(tag:String = LOG_TAG,msg:String) { Log.e(tag, "==>  $msg  <==") }
 fun Logd(tag:String = LOG_TAG,msg:String) { Log.d(tag, "==>  $msg  <==") }
