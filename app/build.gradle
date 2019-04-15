@@ -43,5 +43,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //okgo
     implementation 'com.lzy.net:okgo:3.0.4'
-
+    //适配
+    implementation 'me.jessyan:autosize:1.1.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    //shape_edittext_border
+    implementation 'com.noober.background:core:1.3.4'
 }
