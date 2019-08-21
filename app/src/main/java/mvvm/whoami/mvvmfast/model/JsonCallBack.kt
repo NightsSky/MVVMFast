@@ -1,43 +1,28 @@
-package com.whoami.r.yellmovie.utils
+package mvvm.whoami.mvvmfast.model
 
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.lzy.okgo.callback.AbsCallback
-import okhttp3.Request
+import mvvm.whoami.mvvmfast.base.BaseResponse
 import okhttp3.Response
-import okhttp3.ResponseBody
 import java.lang.reflect.ParameterizedType
-import java.lang.reflect.Type
+import java.net.ConnectException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 
 /**
  * Created by XKL on 2018/8/8.
  */
-//abstract class JsonCallBack<T>(var clazz: Class<T>) :AbsCallback<T>(){
-//
-//    override fun convertResponse(response: Response?): T? {
-//        val body  = response?.body() ?: return null
-//        var data = null
-//        var gson = Gson()
-//        val jsonReader = JsonReader(body.charStream())
-//        if (clazz!=null) data = gson.fromJson(jsonReader, clazz)
-//        return data
-//    }
-//}
 
-abstract class JsonCallback<T> : AbsCallback<T> {
+abstract class JsonCallback<T> : AbsCallback<T>() {
 
-    private var type: Type? = null
-    private var clazz: Class<T>? = null
 
-    constructor()
-    constructor(type: Type) {
-        this.type = type
+    override fun onSuccess(response: com.lzy.okgo.model.Response<T>?) {
+        success(response?.body())
     }
 
-    constructor(clazz: Class<T>) {
-        this.clazz = clazz
-    }
+    abstract fun success(response: T?)
 
 
     /**
@@ -47,25 +32,44 @@ abstract class JsonCallback<T> : AbsCallback<T> {
      */
     @Throws(Throwable::class)
     override fun convertResponse(response: Response): T? {
+        val genType = javaClass.genericSuperclass
+        val params = (genType as ParameterizedType).actualTypeArguments
+        val type = params[0] as? ParameterizedType ?: throw IllegalStateException("没有填写泛型参数")
 
-        //详细自定义的原理和文档，看这里： https://github.com/jeasonlzy/okhttp-OkGo/wiki/JsonCallback
-        /*
-         * 一般直接 new JsonCallback 会直接用无参构造器，但是无参构造器不能带有Bean类类型，
-         * 无参的Bean类类型在泛型T中已传入，所以在这里先判断一下，如果为空，就获取一下。
-         */
-        if (type == null) {
-            if (clazz == null) {
-                val genType = javaClass.genericSuperclass
-                type = (genType as ParameterizedType).actualTypeArguments[0]
-            }
-        }
-
+        val rawType = type .rawType
         val body = response.body() ?: return null
-        var data: T? = null
         val gson = Gson()
         val jsonReader = JsonReader(body.charStream())
-        if (type != null) data = gson.fromJson(jsonReader, type)
-        if (clazz != null) data = gson.fromJson<T>(jsonReader, clazz)
-        return data
+        if (rawType != BaseResponse::class.java) {
+            val data = gson.fromJson<T>(jsonReader, type)
+            response.close()
+            return data
+        } else {
+            //有数据类型，表示有data
+            val baseResponse = gson.fromJson<BaseResponse<*>>(jsonReader, type)
+            response.close()
+            when (baseResponse.code) {
+                0 -> {//成功
+                }
+                1021->{
+                     throw IllegalStateException("err")
+                }
+
+                else -> {
+                     throw IllegalStateException(baseResponse.message)
+                }
+            }
+            return baseResponse as T
+        }
+
+    }
+
+    override fun onError(response: com.lzy.okgo.model.Response<T>) {
+        super.onError(response)
+        if (response.exception is UnknownHostException || response.exception is ConnectException) {
+        } else if (response.exception is SocketTimeoutException) {
+        } else if (response.exception is IllegalStateException) {
+        } else {
+        }
     }
 }
