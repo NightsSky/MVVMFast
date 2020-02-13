@@ -1,13 +1,13 @@
 package mvvm.whoami.mvvmfast.base
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import mvvm.whoami.mvvmfast.widget.LoadingView
 
-abstract class BaseFragment<T:BaseViewModel>:Fragment() {
+abstract class BaseFragment<T:BaseViewModel>: Fragment() {
     lateinit var vm:T
     val loading: LoadingView by lazy {
         LoadingView.Builder(activity).create()

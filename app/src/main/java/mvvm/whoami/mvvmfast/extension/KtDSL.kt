@@ -1,12 +1,10 @@
 package mvvm.whoami.mvvmfast.extension
 
-import android.annotation.SuppressLint
-import android.arch.lifecycle.*
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 /**
  * Created by XKL on 2018/8/10.

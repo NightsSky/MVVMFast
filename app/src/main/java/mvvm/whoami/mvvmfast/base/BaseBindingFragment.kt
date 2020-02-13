@@ -1,23 +1,23 @@
 package mvvm.whoami.mvvmfast.base
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import mvvm.whoami.mvvmfast.widget.LoadingView
 
-abstract class BaseBindingFragment<VM:BaseViewModel,V : ViewDataBinding>:Fragment() {
+abstract class BaseBindingFragment<VM:BaseViewModel,V : ViewDataBinding>: Fragment() {
     lateinit var vm:VM
     lateinit var binding:V
     val loading: LoadingView by lazy {
         LoadingView.Builder(activity).create()
     }
-    public abstract fun initContentView(): Int
-    public abstract fun initView()
-    public abstract fun initViewModel():VM
+     abstract fun initContentView(): Int
+     abstract fun initView()
+     abstract fun initViewModel():VM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, initContentView(), container, false)

@@ -1,6 +1,6 @@
 package mvvm.whoami.mvvmfast.base
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 open class BaseViewModel : ViewModel() {
 

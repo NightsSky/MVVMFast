@@ -47,7 +47,7 @@ fun  SharedPreferences.putAny(key: String, value: Any) {
  */
 inline fun <reified T:Any> SharedPreferences.getAny(key: String):T? {
     val str = this.getString(key,"")
-    return if (str.isEmpty()) {
+    return if (str!!.isEmpty()) {
         null
     } else {
         Gson().fromJson(str, T::class.java)
@@ -59,7 +59,7 @@ inline fun <reified T:Any> SharedPreferences.getAny(key: String):T? {
  */
 inline fun <reified T:Any> SharedPreferences.getListAny(key: String,type: Type):List<T>? {
     val str = this.getString(key,"")
-    return if (str.isEmpty()) {
+    return if (str!!.isEmpty()) {
         null
     } else {
         Gson().fromJson(str, type)
