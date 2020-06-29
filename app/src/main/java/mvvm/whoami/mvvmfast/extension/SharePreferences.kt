@@ -3,7 +3,7 @@ package mvvm.whoami.mvvmfast.extension
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import mvvm.whoami.mvvmfast.app.MyApplication
+import mvvm.whoami.mvvmfast.app.MyApp
 import java.lang.reflect.Type
 
 /**
@@ -11,7 +11,7 @@ import java.lang.reflect.Type
  */
 
 val sp: SharedPreferences by lazy {
-    MyApplication.getInstance().getSharedPreferences("FAST", 0)
+    MyApp.getInstance().getSharedPreferences("FAST", 0)
 }
 
 /**

@@ -2,7 +2,7 @@ package mvvm.whoami.mvvmfast.extension
 
 import android.util.Log
 import android.widget.Toast
-import mvvm.whoami.mvvmfast.app.MyApplication
+import mvvm.whoami.mvvmfast.app.MyApp
 import mvvm.whoami.mvvmfast.model.LOG_TAG
 
 
@@ -12,7 +12,7 @@ import mvvm.whoami.mvvmfast.model.LOG_TAG
 private var toast:Toast?=null
 fun showToast(message:String,duration:Int = 0) {
     if (toast == null) {
-        toast = Toast.makeText(MyApplication.getInstance(), message, duration)
+        toast = Toast.makeText(MyApp.getInstance(), message, duration)
     } else {
         toast?.setText(message)
         toast?.duration = duration

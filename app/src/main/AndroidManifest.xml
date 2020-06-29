@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".app.MyApplication"
+        android:name=".app.MyApp"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
@@ -18,7 +18,7 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="640"/>
-        <activity android:name="mvvm.whoami.mvvmfast.view.activity.MainActivity">
+        <activity android:name="mvvm.whoami.mvvmfast.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
