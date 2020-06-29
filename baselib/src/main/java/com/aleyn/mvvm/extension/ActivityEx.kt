@@ -1,5 +1,5 @@
 
-package mvvm.whoami.mvvmfast.extension
+package com.aleyn.mvvm.extension
 
 import android.app.Activity
 import android.content.Intent

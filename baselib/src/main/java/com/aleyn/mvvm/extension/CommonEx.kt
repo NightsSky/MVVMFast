@@ -1,4 +1,4 @@
-package mvvm.whoami.mvvmfast.extension
+package com.aleyn.mvvm.extension
 
 import android.util.Log
 import android.widget.Toast

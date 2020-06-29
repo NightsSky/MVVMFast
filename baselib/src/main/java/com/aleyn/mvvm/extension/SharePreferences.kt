@@ -1,5 +1,5 @@
 
-package mvvm.whoami.mvvmfast.extension
+package com.aleyn.mvvm.extension
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
