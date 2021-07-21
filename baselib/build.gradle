@@ -36,11 +36,12 @@ dependencies {
     api rootProject.ext.dependencies["material-dialogs-core"]
     api rootProject.ext.dependencies["material-dialogs-lifecycle"]
     //glide
-    api rootProject.ext.dependencies.glide
-    kapt rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies.Coil
     // utils 集合了大量常用的工具类
     api rootProject.ext.dependencies.utilcodex
     //界面适配
     api rootProject.ext.dependencies.autosize
+    //状态栏
+    api rootProject.ext.dependencies.immersionbar
 }
 

@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.xiaohaibin:XBanner:androidx_v1.1.3@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e90c7114fd17fd328fbe0ee840051954/jetified-XBanner-androidx_v1.1.3/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e90c7114fd17fd328fbe0ee840051954/jetified-XBanner-androidx_v1.1.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e90c7114fd17fd328fbe0ee840051954/jetified-XBanner-androidx_v1.1.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e90c7114fd17fd328fbe0ee840051954/jetified-XBanner-androidx_v1.1.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xiaohaibin/XBanner/androidx_v1.1.3/7bef8d9d2887493990b475bce5470ed6c17410b0/XBanner-androidx_v1.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

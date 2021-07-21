@@ -7,18 +7,11 @@ import mvvm.whoami.mvvmfast.network.entity.HomeListBean
 
 class HomeViewModel : BaseViewModel() {
 
-//    private val homeRepository by lazy { InjectorUtil.getHomeRepository() }
 
     private val mBanners = MutableLiveData<List<BannerBean>>()
 
     private val projectData = MutableLiveData<HomeListBean>()
 
-    fun getBanner(refresh: Boolean = false): MutableLiveData<List<BannerBean>> {
-        launchGo({
-//            mBanners.value = homeRepository.getBannerData(refresh)
-        })
-        return mBanners
-    }
 
     /**
      * @param page 页码

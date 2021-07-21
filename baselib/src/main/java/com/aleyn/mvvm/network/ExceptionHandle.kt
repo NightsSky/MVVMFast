@@ -1,10 +1,10 @@
 package com.aleyn.mvvm.network
 
 import android.net.ParseException
+import coil.network.HttpException
 import com.google.gson.JsonParseException
 import com.google.gson.stream.MalformedJsonException
 import org.json.JSONException
-import retrofit2.HttpException
 import java.net.ConnectException
 
 /**

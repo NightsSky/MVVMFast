@@ -1,5 +1,6 @@
 package mvvm.whoami.mvvmfast.view.detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import com.aleyn.mvvm.base.BaseActivity
@@ -21,5 +22,7 @@ class DetailActivity : BaseActivity<NoViewModel, ViewDataBinding>() {
     }
 
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 }

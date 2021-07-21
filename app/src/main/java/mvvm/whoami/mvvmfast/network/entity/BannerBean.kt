@@ -32,7 +32,7 @@ data class BannerBean(
     val type: Int,
     val url: String
 ) : SimpleBannerInfo() {
-    override fun getXBannerUrl(): Any {
+    override fun getXBannerUrl(): String {
         return imagePath
     }
 }

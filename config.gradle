@@ -3,8 +3,8 @@ ext {
     android = [
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.0",
-            applicationId    : "mvvm.whoami.mvvmlink",
-            minSdkVersion    : 19,
+            applicationId    : "com.whoami.mvvmfast",
+            minSdkVersion    : 22,
             targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : "1.0.0",
@@ -17,8 +17,7 @@ ext {
             extensions: '2.2.0-rc01',
             constraint: '2.0.0-beta7',
             annotation: '1.1.0',
-            dagger2   : '2.26',
-            room      : '2.2.4'
+//            room      : '2.2.4'
     ]
 
     //androidx
@@ -41,17 +40,11 @@ ext {
     ]
 
     //network
-    retrofit = [
-            retrofit        : "com.squareup.retrofit2:retrofit:2.6.0",
-            "converter-gson": "com.squareup.retrofit2:converter-gson:2.6.0",
+    rxhttp = [
+            "rxhttp"                  :"com.ljx.rxhttp:rxhttp:2.5.3",
+            "rxlife"                  :"com.ljx.rxlife:rxlife-coroutine:2.0.1",
     ]
 
-    dagger2 = [
-            "dagger-android"          : "com.google.dagger:dagger-android:${versions["dagger2"]}",
-            "dagger-android-support"  : "com.google.dagger:dagger-android-support:${versions["dagger2"]}",
-            "dagger-compiler"         : "com.google.dagger:dagger-compiler:${versions["dagger2"]}",
-            "dagger-android-processor": "com.google.dagger:dagger-android-processor:${versions["dagger2"]}"
-    ]
 
 
     room = [
@@ -63,24 +56,25 @@ ext {
 
     //依赖第三方配置
     dependencies = [
-            //glide图片加载
-            glide                       : "com.github.bumptech.glide:glide:4.9.0",
-            "glide-compiler"            : "com.github.bumptech.glide:compiler:4.9.0",
+            //图片加载
+            "Coil"                      : "io.coil-kt:coil:1.3.0",
             //material-dialogs
             "material-dialogs-lifecycle": "com.afollestad.material-dialogs:lifecycle:3.1.1",
             "material-dialogs-core"     : "com.afollestad.material-dialogs:core:3.1.1",
             //Utils
-            utilcodex                   : 'com.blankj:utilcodex:1.26.0',
-            banner                      : 'com.github.xiaohaibin:XBanner:androidx_v1.0.2',
+            utilcodex                   : 'com.blankj:utilcodex:1.30.6',
+            banner                      : 'com.github.xiaohaibin:XBanner:androidx_v1.1.3',
             'bottom-tab'                : 'me.majiajie:pager-bottom-tab-strip:2.3.0X',
-            BRVAH                       : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11',
+            BRVAH                       : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4',
             bdclta                      : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.1',
             'bdclta-rv'                 : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.1',
-            autosize                    : 'me.jessyan:autosize:1.2.0'
+            autosize                    : 'me.jessyan:autosize:1.2.1',
+            immersionbar                : 'com.gyf.immersionbar:immersionbar:3.0.0',
+            magicIndicator              : 'com.github.hackware1993:MagicIndicator:1.7.0',
     ]
 
     androidxs = androidx.values()
-    network = retrofit.values()
+    network = rxhttp.values()
 }
 
 

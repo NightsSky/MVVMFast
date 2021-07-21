@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.ljx.rxhttp:rxhttp:2.5.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ljx.rxhttp/rxhttp/2.5.3/5b7f8236ef02dedf3b64d6523691d5690acc5565/rxhttp-2.5.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ljx.rxhttp/rxhttp/2.5.3/45e0d8785a7cc67a7bfa5a1b0ddc1a234322a52e/rxhttp-2.5.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ljx.rxhttp/rxhttp/2.5.3/fc1e37104c3c11bd0aafd3f438b176f5be8e8f76/rxhttp-2.5.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

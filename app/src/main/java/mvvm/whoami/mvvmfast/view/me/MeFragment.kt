@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aleyn.mvvm.base.BaseFragment
-import com.pcl.mvvm.ui.me.MeViewModel
 import kotlinx.android.synthetic.main.me_fragment.*
 import mvvm.whoami.mvvmfast.R
 import mvvm.whoami.mvvmfast.databinding.MeFragmentBinding

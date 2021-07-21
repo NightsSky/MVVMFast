@@ -1,4 +1,4 @@
-package com.pcl.mvvm.ui.me
+package mvvm.whoami.mvvmfast.view.me
 
 import androidx.lifecycle.MutableLiveData
 import com.aleyn.mvvm.base.BaseViewModel
