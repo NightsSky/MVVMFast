@@ -2,19 +2,18 @@ package com.aleyn.mvvm.base
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.rxLifeScope
 import androidx.lifecycle.viewModelScope
 import com.aleyn.mvvm.event.Message
 import com.aleyn.mvvm.event.SingleLiveEvent
-import com.aleyn.mvvm.network.ExceptionHandle
-import com.aleyn.mvvm.network.ResponseThrowable
+import com.aleyn.mvvm.extension.show
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 /**
- *   @auther : Aleyn
- *   time   : 2019/11/01
+ *   BaseViewModel
  */
 open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
 
@@ -36,121 +35,39 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
     }
 
     /**
-     *  不过滤请求结果
+     *
      * @param block 请求体
      * @param error 失败回调
      * @param complete  完成回调（无论成功失败都会调用）
      * @param isShowDialog 是否显示加载框
      */
-    fun launchGo(
+    fun lifeScope(
         block: suspend CoroutineScope.() -> Unit,
-        error: suspend CoroutineScope.(ResponseThrowable) -> Unit = {
-            defUI.toastEvent.postValue("${it.code}:${it.errMsg}")
-        },
-        complete: suspend CoroutineScope.() -> Unit = {},
-        isShowDialog: Boolean = true
-    ) {
-        if (isShowDialog) defUI.showDialog.call()
-        launchUI {
-            handleException(
-                withContext(Dispatchers.IO) { block },
-                { error(it) },
-                {
-                    defUI.dismissDialog.call()
-                    complete()
-                }
-            )
-        }
-    }
-
-    /**
-     * 过滤请求结果，其他全抛异常
-     * @param block 请求体
-     * @param success 成功回调
-     * @param error 失败回调
-     * @param complete  完成回调（无论成功失败都会调用）
-     * @param isShowDialog 是否显示加载框
-     */
-    fun <T> launchOnlyresult(
-        block: suspend CoroutineScope.() -> IBaseResponse<T>,
-        success: (T) -> Unit,
-        error: (ResponseThrowable) -> Unit = {
-            defUI.toastEvent.postValue("${it.code}:${it.errMsg}")
-        },
+        error: (Throwable) -> Unit = {},
+        start: () -> Unit = {},
         complete: () -> Unit = {},
         isShowDialog: Boolean = true
     ) {
-        if (isShowDialog) defUI.showDialog.call()
-        launchUI {
-            handleException(
-                { withContext(Dispatchers.IO) { block() } },
-                { res ->
-                    executeResponse(res) { success(it) }
-                },
-                {
-                    error(it)
-                },
-                {
-                    defUI.dismissDialog.call()
-                    complete()
-                }
-            )
-        }
-    }
-
-    /**
-     * 请求结果过滤
-     */
-    private suspend fun <T> executeResponse(
-        response: IBaseResponse<T>,
-        success: suspend CoroutineScope.(T) -> Unit
-    ) {
-        coroutineScope {
-            if (response.isSuccess()) success(response.data())
-            else throw ResponseThrowable(response.code(), response.msg())
-        }
-    }
-
-    /**
-     * 异常统一处理
-     */
-    private suspend fun <T> handleException(
-        block: suspend CoroutineScope.() -> IBaseResponse<T>,
-        success: suspend CoroutineScope.(IBaseResponse<T>) -> Unit,
-        error: suspend CoroutineScope.(ResponseThrowable) -> Unit,
-        complete: suspend CoroutineScope.() -> Unit
-    ) {
-        coroutineScope {
-            try {
-                success(block())
-            } catch (e: Throwable) {
-                error(ExceptionHandle.handleException(e))
-            } finally {
-                complete()
-            }
-        }
-    }
-
-
-    /**
-     * 异常统一处理
-     */
-    private suspend fun handleException(
-        block: suspend CoroutineScope.() -> Unit,
-        error: suspend CoroutineScope.(ResponseThrowable) -> Unit,
-        complete: suspend CoroutineScope.() -> Unit
-    ) {
-        coroutineScope {
-            try {
+        rxLifeScope.launch(
+            {
                 block()
-            } catch (e: Throwable) {
-                error(ExceptionHandle.handleException(e))
-            } finally {
+            },
+            {
+                error(it)
+                it.printStackTrace()
+                it.show()
+            },
+            {
+                start()
+                if (isShowDialog) defUI.showDialog.call()
+            },
+            {
+                defUI.dismissDialog.call()
                 complete()
+                defUI.msgEvent.value = Message(0x123, "请求完成了")
             }
-        }
+        )
     }
-
 
     /**
      * UI事件
@@ -161,4 +78,6 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
         val toastEvent by lazy { SingleLiveEvent<String>() }
         val msgEvent by lazy { SingleLiveEvent<Message>() }
     }
+
+
 }

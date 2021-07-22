@@ -18,9 +18,7 @@ class HomeViewModel : BaseViewModel() {
      * @param refresh 是否刷新
      */
     fun getHomeList(page: Int, refresh: Boolean = false): MutableLiveData<HomeListBean> {
-        launchGo({
-//            projectData.value = homeRepository.getHomeList(page, refresh)
-        })
+
         return projectData
     }
 }
