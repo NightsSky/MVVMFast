@@ -7,8 +7,9 @@ import com.aleyn.mvvm.event.Message
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import mvvm.whoami.mvvmfast.R
+import mvvm.whoami.mvvmfast.databinding.ProjectFragmentBinding
 
-class ProjectFragment : BaseFragment<ProjectViewModel, ViewDataBinding>() {
+class ProjectFragment : BaseFragment<ProjectViewModel, ProjectFragmentBinding>() {
 
 
     companion object {

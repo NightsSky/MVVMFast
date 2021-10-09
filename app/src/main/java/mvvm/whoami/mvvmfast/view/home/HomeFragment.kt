@@ -24,6 +24,7 @@ class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
 
     override fun layoutId() = R.layout.home_fragment
 
+    //初始化控件
     override fun initView(savedInstanceState: Bundle?) {
         mAdapter = HomeItemAdapter()
         rcy.init(LinearLayoutManager(requireContext()),mAdapter)
@@ -32,6 +33,7 @@ class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
         }
     }
 
+    //数据加载
     override fun lazyLoadData() {
         viewModel.getHomeList()
         viewModel.listData.observe(this, Observer {

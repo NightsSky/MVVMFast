@@ -46,14 +46,6 @@ ext {
     ]
 
 
-
-    room = [
-            'room-runtime' : "androidx.room:room-runtime:${versions["room"]}",
-            'room-compiler': "androidx.room:room-compiler:${versions["room"]}",
-            'room-ktx'     : "androidx.room:room-ktx:${versions["room"]}",
-            'room-testing' : "androidx.room:room-testing:${versions["room"]}",
-    ]
-
     //依赖第三方配置
     dependencies = [
             //图片加载

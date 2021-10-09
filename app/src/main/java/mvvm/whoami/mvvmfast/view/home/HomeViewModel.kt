@@ -24,6 +24,8 @@ class HomeViewModel : BaseViewModel() {
                     //请求异常，通过it拿到Throwable对象
                     it.printStackTrace()
                 }
+            //请求完成
+
         },isShowDialog = true)
     }
 }

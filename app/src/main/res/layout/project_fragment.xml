@@ -17,14 +17,6 @@
                 app:title="项目"
                 app:titleTextColor="@color/white" />
 
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tb_project"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_42"
-                app:tabBackground="@color/blue"
-                app:tabMode="scrollable"
-                app:tabTextColor="@color/white" />
-
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_project"
                 android:layout_width="match_parent"
