@@ -29,6 +29,7 @@ ext {
             //viewModel and LiveData
             extensions         : "androidx.lifecycle:lifecycle-extensions:${versions['extensions']}",
             'viewmodel-ktx'    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions['extensions']}",
+
             annotation         : 'androidx.annotation:annotation:1.1.0',
             swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     ]
@@ -41,8 +42,7 @@ ext {
 
     //network
     rxhttp = [
-            "rxhttp"                  :"com.ljx.rxhttp:rxhttp:2.5.3",
-            "rxlife"                  :"com.ljx.rxlife:rxlife-coroutine:2.0.1",
+            "rxhttp"       :"com.github.liujingxing.rxhttp:rxhttp:2.7.0",
     ]
 
 
@@ -68,7 +68,7 @@ ext {
             BRVAH                       : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4',
             bdclta                      : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.1',
             'bdclta-rv'                 : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.1',
-            autosize                    : 'me.jessyan:autosize:1.2.1',
+            autosize                    : 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1',
             immersionbar                : 'com.gyf.immersionbar:immersionbar:3.0.0',
             magicIndicator              : 'com.github.hackware1993:MagicIndicator:1.7.0',
     ]

@@ -2,11 +2,9 @@ package com.aleyn.mvvm.base
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.rxLifeScope
 import androidx.lifecycle.viewModelScope
 import com.aleyn.mvvm.event.Message
 import com.aleyn.mvvm.event.SingleLiveEvent
-import com.aleyn.mvvm.extension.show
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
@@ -48,25 +46,28 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
         complete: () -> Unit = {},
         isShowDialog: Boolean = true
     ) {
-        rxLifeScope.launch(
-            {
-                block()
-            },
-            {
-                error(it)
-                it.printStackTrace()
-                it.show()
-            },
-            {
-                start()
-                if (isShowDialog) defUI.showDialog.call()
-            },
-            {
-                defUI.dismissDialog.call()
-                complete()
-                defUI.msgEvent.value = Message(0x123, "请求完成了")
-            }
-        )
+        viewModelScope.launch{
+            block()
+        }
+//        rxLifeScope.launch(
+//            {
+//                block()
+//            },
+//            {
+//                error(it)
+//                it.printStackTrace()
+//                it.show()
+//            },
+//            {
+//                start()
+//                if (isShowDialog) defUI.showDialog.call()
+//            },
+//            {
+//                defUI.dismissDialog.call()
+//                complete()
+//                defUI.msgEvent.value = Message(0x123, "请求完成了")
+//            }
+//        )
     }
 
     /**

@@ -8,8 +8,7 @@ import rxhttp.wrapper.annotation.DefaultDomain
 class API {
     companion object {
         @DefaultDomain
-        // const val BASE_URL = "http://116.62.27.141:8080"
-        const val BASE_URL = "http://app.aicaowu.cn:8080"
+         const val BASE_URL = "http://116.62.27.141:8080"
 
         /*************************************公用接口**********************************************************/
 

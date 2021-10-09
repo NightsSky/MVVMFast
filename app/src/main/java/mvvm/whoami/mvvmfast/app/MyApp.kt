@@ -1,6 +1,5 @@
 package mvvm.whoami.mvvmfast.app
 
-import android.app.Application
 import com.aleyn.mvvm.app.BaseApp
 
 /**
@@ -8,13 +7,8 @@ import com.aleyn.mvvm.app.BaseApp
  */
 class MyApp: BaseApp(){
 
-    companion object {
-        private  var instance:Application?=null
-        fun getInstance() = instance!!
-    }
     override fun onCreate() {
         super.onCreate()
-        instance = this
         initComponent()
     }
 

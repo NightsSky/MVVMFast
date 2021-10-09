@@ -1,24 +1,20 @@
 package mvvm.whoami.mvvmfast.view.home
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.aleyn.mvvm.base.BaseViewModel
-import mvvm.whoami.mvvmfast.network.entity.BannerBean
-import mvvm.whoami.mvvmfast.network.entity.HomeListBean
+import kotlinx.coroutines.launch
+import mvvm.whoami.mvvmfast.model.API
+import rxhttp.wrapper.param.RxHttp
 
 class HomeViewModel : BaseViewModel() {
 
 
-    private val mBanners = MutableLiveData<List<BannerBean>>()
 
-    private val projectData = MutableLiveData<HomeListBean>()
-
-
-    /**
-     * @param page 页码
-     * @param refresh 是否刷新
-     */
-    fun getHomeList(page: Int, refresh: Boolean = false): MutableLiveData<HomeListBean> {
-
-        return projectData
+    fun getHomeList() {
+       viewModelScope.launch {
+           RxHttp.postForm(API.login)
+               .add("params","password")
+               .as
+       }
     }
 }

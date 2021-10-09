@@ -18,12 +18,6 @@ class MeFragment : BaseFragment<MeViewModel, MeFragmentBinding>() {
     override fun layoutId() = R.layout.me_fragment
 
     override fun initView(savedInstanceState: Bundle?) {
-        with(rv_me_uesd_web) {
-            layoutManager = LinearLayoutManager(context)
-        }
-        viewModel.popularWeb.observe(viewLifecycleOwner, Observer {
-//            mAdapter.setNewData(it)
-        })
 
     }
 

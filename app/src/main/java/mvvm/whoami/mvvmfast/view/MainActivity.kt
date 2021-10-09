@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.blankj.utilcode.util.BarUtils
+import kotlinx.android.synthetic.main.activity_main.*
 import mvvm.whoami.mvvmfast.view.home.HomeFragment
 import mvvm.whoami.mvvmfast.view.me.MeFragment
 import mvvm.whoami.mvvmfast.view.project.ProjectFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import mvvm.whoami.mvvmfast.R
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private val fragments = ArrayList<Fragment>()
