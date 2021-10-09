@@ -14,10 +14,7 @@ import com.aleyn.mvvm.event.Message
 import com.blankj.utilcode.util.ToastUtils
 import java.lang.reflect.ParameterizedType
 
-/**
- *   @auther : Aleyn
- *   time   : 2019/11/01
- */
+
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var viewModel: VM

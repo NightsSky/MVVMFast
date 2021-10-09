@@ -3,6 +3,7 @@ package com.aleyn.mvvm.extension
 
 import android.app.Activity
 import android.content.Intent
+import androidx.fragment.app.Fragment
 
 /**
  * activity类相关扩展
@@ -17,13 +18,23 @@ import android.content.Intent
   fun  Activity.activityTo(clazz: Class<*>) {
     this.startActivity(Intent(this, clazz))
 }
+fun Fragment.activityTo(clazz: Class<*>) {
+    this.startActivity(Intent(activity, clazz))
+}
+
 
 /**
  * 跳转，带参数
  */
-fun  Activity.activityTo(clazz: Class<*>,lambda:Intent.()->Unit) {
+fun Activity.activityTo(clazz: Class<*>,lambda:Intent.()->Unit) {
     val intent = Intent(this, clazz)
         intent.apply { lambda() }
+    this.startActivity(intent)
+}
+fun Fragment.activityTo(clazz: Class<*>,lambda:Intent.()->Unit) {
+
+    val intent = Intent(activity, clazz)
+    intent.apply { lambda() }
     this.startActivity(intent)
 }
 

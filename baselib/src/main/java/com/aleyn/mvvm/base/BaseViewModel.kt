@@ -7,6 +7,7 @@ import com.aleyn.mvvm.event.Message
 import com.aleyn.mvvm.event.SingleLiveEvent
 import com.blankj.utilcode.util.Utils
 import kotlinx.coroutines.*
+import kotlinx.coroutines.NonCancellable.isActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -35,39 +36,23 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
     /**
      *
      * @param block 请求体
-     * @param error 失败回调
+     * @param start 请求开始
      * @param complete  完成回调（无论成功失败都会调用）
      * @param isShowDialog 是否显示加载框
      */
     fun lifeScope(
         block: suspend CoroutineScope.() -> Unit,
-        error: (Throwable) -> Unit = {},
         start: () -> Unit = {},
         complete: () -> Unit = {},
         isShowDialog: Boolean = true
     ) {
-        viewModelScope.launch{
+        start.invoke()
+        viewModelScope.launch {
+            if (isShowDialog) defUI.showDialog.call()
             block()
+            defUI.dismissDialog.call()
         }
-//        rxLifeScope.launch(
-//            {
-//                block()
-//            },
-//            {
-//                error(it)
-//                it.printStackTrace()
-//                it.show()
-//            },
-//            {
-//                start()
-//                if (isShowDialog) defUI.showDialog.call()
-//            },
-//            {
-//                defUI.dismissDialog.call()
-//                complete()
-//                defUI.msgEvent.value = Message(0x123, "请求完成了")
-//            }
-//        )
+        complete.invoke()
     }
 
     /**

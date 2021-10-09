@@ -1,10 +1,12 @@
 package mvvm.whoami.mvvmfast.app
 
 import com.aleyn.mvvm.app.BaseApp
+import mvvm.whoami.mvvmfast.BuildConfig
+import rxhttp.RxHttpPlugins
+import rxhttp.wrapper.param.RxHttp
+import rxhttp.wrapper.utils.LogUtil.setDebug
 
-/**
- * Created by XKL on 2018/11/23.
- */
+
 class MyApp: BaseApp(){
 
     override fun onCreate() {
@@ -14,6 +16,8 @@ class MyApp: BaseApp(){
 
     //初始化组件
     private fun initComponent() {
+        RxHttpPlugins.init(null)
+            .setDebug(true)
     }
 
 }

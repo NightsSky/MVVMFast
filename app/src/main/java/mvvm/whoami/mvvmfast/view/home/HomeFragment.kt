@@ -2,18 +2,21 @@ package mvvm.whoami.mvvmfast.view.home
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.aleyn.mvvm.base.BaseFragment
+import com.aleyn.mvvm.extension.activityTo
 import com.stx.xhb.androidx.XBanner
+import kotlinx.android.synthetic.main.home_fragment.*
 import mvvm.whoami.mvvmfast.R
+import mvvm.whoami.mvvmfast.utils.init
+import mvvm.whoami.mvvmfast.view.detail.DetailActivity
+import mvvm.whoami.mvvmfast.view.home.adapter.HomeItemAdapter
 
-/**
- *   @auther : Aleyn
- *   time   : 2019/11/02
- */
+
 class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
 
-    private var page: Int = 0
-    private lateinit var banner: XBanner
+    private lateinit var mAdapter: HomeItemAdapter
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -22,11 +25,18 @@ class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
     override fun layoutId() = R.layout.home_fragment
 
     override fun initView(savedInstanceState: Bundle?) {
-
+        mAdapter = HomeItemAdapter()
+        rcy.init(LinearLayoutManager(requireContext()),mAdapter)
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            activityTo(DetailActivity::class.java)
+        }
     }
 
     override fun lazyLoadData() {
-
+        viewModel.getHomeList()
+        viewModel.listData.observe(this, Observer {
+            mAdapter.setList(it)
+        })
     }
 
 }
