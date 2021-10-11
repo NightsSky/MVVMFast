@@ -6,13 +6,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aleyn.mvvm.base.BaseFragment
 import com.aleyn.mvvm.extension.activityTo
-import com.stx.xhb.androidx.XBanner
 import kotlinx.android.synthetic.main.home_fragment.*
 import mvvm.whoami.mvvmfast.R
 import mvvm.whoami.mvvmfast.utils.init
 import mvvm.whoami.mvvmfast.view.detail.DetailActivity
 import mvvm.whoami.mvvmfast.view.home.adapter.HomeItemAdapter
-
 
 class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
 
@@ -39,6 +37,7 @@ class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
         viewModel.listData.observe(this, Observer {
             mAdapter.setList(it)
         })
+
     }
 
 }

@@ -40,7 +40,6 @@ dependencies {
 
     implementation rootProject.ext.dependencies.BRVAH
     implementation rootProject.ext.dependencies['bottom-tab']
-    implementation rootProject.ext.dependencies.banner
     implementation rootProject.androidx.swiperefreshlayout
     kapt 'com.github.liujingxing.rxhttp:rxhttp-compiler:2.7.0'
 }

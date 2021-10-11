@@ -11,8 +11,8 @@ import mvvm.whoami.mvvmfast.model.entity.ListItem
 class HomeItemAdapter : BaseQuickAdapter<ListItem, BaseViewHolder>(R.layout.item_home_layout),
     LoadMoreModule {
 
-    override fun convert(helper: BaseViewHolder, item: ListItem) {
-        with(helper.itemView) {
+    override fun convert(holder: BaseViewHolder, item: ListItem) {
+        with(holder.itemView) {
             name.text = item.title
         }
     }
