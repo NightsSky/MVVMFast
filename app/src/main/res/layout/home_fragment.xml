@@ -12,14 +12,11 @@
             android:orientation="vertical"
             tools:context=".ui.home.HomeFragment">
 
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_home"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                app:title="主页"
-                app:titleTextColor="@color/white" />
-
+        <mvvm.whoami.mvvmfast.widget.CustomTitleBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerTitle="主页"/>
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy"
                 android:layout_width="match_parent"

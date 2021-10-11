@@ -24,6 +24,7 @@ class HomeFragment : BaseFragment<HomeViewModel, ViewDataBinding>() {
 
     //初始化控件
     override fun initView(savedInstanceState: Bundle?) {
+        toolbar.setIsShowBack(false)
         mAdapter = HomeItemAdapter()
         rcy.init(LinearLayoutManager(requireContext()),mAdapter)
         mAdapter.setOnItemClickListener { adapter, view, position ->
